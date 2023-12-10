@@ -1,0 +1,10 @@
+.movie-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.tile-content {
+  font-size: small;
+  padding-top: 0.25em;
+}

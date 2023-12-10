@@ -1,0 +1,35 @@
+.top-navbar {
+  background-color: #2f84ce;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+}
+
+.nav-title {
+  font-size: 2rem;
+}
+
+.top-navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.top-navbar a {
+  color: white;
+  text-decoration: none;
+  height: 100%;
+  align-self: center;
+}
+
+.top-navbar li:active {
+  color: white;
+}
+
+.top-navbar li button {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}

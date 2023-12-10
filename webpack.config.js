@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   target: "web",
   module: {
@@ -22,6 +23,25 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.json$/,
+        type: "asset/resource",
+        generator: {
+          filename: "feed/[name][ext]",
+        },
+      },
     ],
   },
   resolve: {
@@ -33,12 +53,26 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: "8000",
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
+    port: 8000,
+    static: [
+      {
+        directory: path.join(__dirname, "dist"),
+        publicPath: "/",
+        watch: true,
+      },
+      {
+        directory: path.join(__dirname, "assets"),
+        publicPath: "/assets",
+        watch: true,
+      },
+      {
+        directory: path.join(__dirname, "feed"),
+        publicPath: "/feed",
+        watch: true,
+      },
+    ],
     hot: true,
     open: true,
-    liveReload: true,
+    historyApiFallback: true,
   },
 };

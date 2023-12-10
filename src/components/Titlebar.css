@@ -1,0 +1,7 @@
+.title-bar {
+  padding: 0.5em 2em;
+  background-color: #3c3d3e;
+  color: white;
+  font-weight: 500;
+  box-shadow: 2px 4px 8px #626365;
+}

@@ -1,0 +1,31 @@
+.tile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+.tile-image {
+  position: relative;
+  width: 12.5em;
+  height: 15em;
+  background-color: black;
+  overflow: hidden;
+}
+
+.tile-image {
+  object-fit: cover;
+}
+
+.tile-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px; /* Adjust the font size as needed */
+  text-align: center;
+}
+
+.tile-content {
+  font-size: small;
+  padding-top: 0.25em;
+}

@@ -1,0 +1,25 @@
+.content-list-container {
+  display: flex;
+  padding: 2em;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 1.25em;
+}
+
+.content-list-item {
+  display: flex;
+  flex-direction: column;
+  width: 10em;
+  margin: 1.25em;
+}
+
+.content-list-item img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 12.5em;
+}
+
+.content-list-item p {
+  font-size: small;
+  margin-top: 0.5em;
+}
