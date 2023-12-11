@@ -1,100 +1,126 @@
-# Stan Coding Challenge
-
-> Welcome to the Stan Coding Challenge!
-
-## Overview
-
-To complete this challenge, you will need to write a simple [React](https://facebook.github.io/react/) based web app, and provide us the source files to be built.
-
-The purpose of this challenge is to assess your **skills and approach to composing a simple web app** given a set of screens and an API feed. We will also assess the **generated HTML, CSS, and JS** output.
-
-This challenge is expected to take about 2-4 hours.
-
 ## The Challenge
 
-It's pretty simple. Using the provided screens as a reference, you'll need to build a set of React components to render the app. You'll also need to request a JSON feed, filter that data, and use the relevant fields.
+Build a sample project based on the screens provided. More Details on the challenge and the project can be found [here](./docs/PROJECT_README.md)
 
-Although this is a basic exercise, we'll be looking for **simple, well-designed, performant, and tested code** in the submission.
+## Technology Stack and Setup
 
-Please include a `README` with setup instructions, and any tests or other documentation you created as part of your solution.
+This project is built using the following technologies:
 
-Also, add the following info to your `README`:
+- **React:** A JavaScript library for building user interfaces.
+- **Webpack:** A module bundler for JavaScript applications.
+- **Babel:** A JavaScript compiler for writing next-generation JavaScript.
+- **React Router:** A library for handling navigation and routing in a React application.
+- **Prettier:** An opinionated code formatter.
+- **ESLint:** A tool for identifying and fixing problems in JavaScript code.
+- **React Testing Library:** A testing utility for React applications.
 
-- How did you decide on the technical and architectural choices used as part of your solution?
-- Are there any improvements you could make to your submission?
-- What would you do differently if you were allocated more time?
+This project was built using React without the use of create-react-app. The configuration settings were done manually using webpack.
 
-## Details
+- **Webpack Configuration**: 
+**Entry Point**: The main entry point of the application is set to `src/index.jsx`, which is the starting point for bundling the application.
+**Output**: The bundled JavaScript code is output to the `dist` folder, and the generated `bundle.js` file is referenced in the `index.html` file.
+**Loaders**:
+   - **JavaScript/JSX**: Babel-loader is used to transpile modern JavaScript (ES6+) to a version compatible with most browsers.
+   - **CSS**: Style-loader and CSS-loader are used to handle styles in the project.
+   - **Images**: File-loader is configured to handle image files.
+**Static Assets**: The `static` configuration in the development server points to both the `dist` and `assets` folders to serve static assets during development.
+**Development Server**: The development server is set up to run on port 8000, with hot module replacement and live reloading for an efficient development workflow.
+**Webpack Dev Server**: Configured to open the application in the default browser and enable hot module replacement.
+ **Resolve Extensions**: Webpack is configured to resolve file extensions like `.js`, `.jsx`, and `.json`.
 
-You will need to build the following 3 pages with React:
+### Code Formatting and Linting
 
-- A "Home" page
-- A "Series" page
-- A "Movies" page
+This project follows a consistent code style and adheres to best practices using Prettier and ESLint.
 
-The deployable solution should be built in a folder named **`dist`** with an entry point file of **`index.html`**.
+### Prettier
 
-Please create components for each part of the page (eg. header, content, footer, etc).
-Assets are provided in the `assets` folder.
+[Prettier](https://prettier.io/) is a code formatter that ensures a consistent and clean code style across the project. The configuration for Prettier is defined in the `.prettierrc` file.
 
-The pages should also be usable on mobile and tablet devices.
+To format the code, run the following command:
 
-You can assume that you do not have to support legacy browsers without features such as `fetch` or `flexbox`.
+```
+npm run format
+yarn format
+```
 
-### "Home" Page
+### ESLint
 
-Refer to the [screens/1-home.jpg](./screens/1-home.jpg) screen.
+[ESLint](https://eslint.org/) is a powerful JavaScript linter that helps identify and fix issues in the code. The ESLint configuration is specified in the .eslintrc file.
 
-This will be your `index.html` screen.
+To lint the code, run the following command:
 
-You will need to display 2 tiles, which link to the "Series" page and the "Movies" page.
+```
+npm run lint
+yarn lint
+```
 
-### "Series" and "Movies" Pages
+## Project Structure
 
-Refer to the [screens/2-series.jpg](./screens/2-series.jpg) and [screens/3-movies.jpg](./screens/3-movies.jpg) screens.
+The project follows a standard React project structure with additional configuration for webpack. Here's an overview of the main directories and files:
 
-For each page you will need to fetch this JSON feed [feed/sample.json](https://raw.githubusercontent.com/StreamCo/react-coding-challenge/master/feed/sample.json), then:
+- **src**: Contains the source code of the React application.
+  - **components**: Reusable UI components.
+  - **hooks**: Custom hooks used in the application.
+  - **pages**: React components representing different pages of the app.
+  - **utils**: Utility functions or helper modules.
+  - **App.js**: The main component where the routes are defined.
+  - **index.js**: The entry point of the  application.
+  - **index.css**: Global styles for the application.
+- **public**: Static assets and the main HTML file.
+- **assets**: Images and other static assets.
+- **feed**: Sample JSON file.
+- **dist**: Output folder for webpack (generated when we build the project).
+- **node_modules**: Node.js modules installed by npm.
+- **.babelrc**: Babel configuration file.
+- **.eslintrc**: ESLint configuration file.
+- **package.json**: Node.js package file.
+- **webpack.config.js**: Webpack configuration file.
 
-- Display the first 21 `entries`
-- Where the entry has a `releaseYear` attribute value >= `2010`
-- Sorted by the `title` attribute value in ascending alphanumeric order
+This structure helps maintain a clear separation between pages and reusable components, promoting modularity and maintainability.
 
-For the "Series" page filter on:
 
-- Where the entry has a `programType` attribute value of `series`
+## Getting Started
+Follow these steps to set up and run the project locally.
 
-For the "Movies" page filter on:
+- Clone the repository
+- Install dependencies: 
+```yarn install```
 
-- Where the entry has a `programType` attribute value of `movie`
+- Start the development server: 
+```yarn start```
 
-The attributes you should use to display the entries are:
+Open your browser and go to http://localhost:8000
 
-- `title`
-- `images` → `Poster Art` → `url`
 
-You will also need to handle the loading and error states of fetching the JSON feed:
+## Testing 
+This project uses Jest and React Testing Library for testing. While the existing test suite covers certain scenarios, there is room for improvement and additional test coverage. 
+At the moment only the helpers and the hooks have been tested. 
 
-- "Loading" state [screens/1.1-loading.jpg](./screens/1.1-loading.jpg)
-- "Error" state [screens/1.2-error.jpg](./screens/1.2-error.jpg)
+To run the tests
 
-## FAQ
+``` 
+yarn test
+yarn test:watch
+```
 
-### What language, framework, build tool... should I use?
+## Styling
 
-You may use whatever you like as long as the solution is built using [React](https://facebook.github.io/react/) or an equivalent library.
+The styling for this project has been implemented without relying on third-party frameworks. It follows a modular structure, and each component has its dedicated CSS file for styling. The project utilizes responsive design principles, making it suitable for various screen sizes.
 
-We prefer it if you did not use any third party CSS frameworks.
+Styling is organized using modular CSS files associated with each component. This approach enhances maintainability and makes it easier to locate and update styles for specific components.
 
-We also prefer the use of minimal dependencies.
+The project leverages Flexbox for layout, contributing to a flexible and responsive design. Whether viewed on desktop or mobile devices, the content adapts to the screen size, providing an optimal user experience.
 
-## Useful Links
+## Routing
 
-- [Bitbucket](https://bitbucket.org/) - Source code hosting, with free private repositories for small teams.
-- [Google Fonts - Raleway](https://fonts.google.com/?selection.family=Raleway)
-- [React](https://facebook.github.io/react/)
+The project follows a simple and intuitive routing structure to navigate through different sections. The main routes include:
 
-## Other Notes
+- **Home:** The default route is set to `/`, providing an overview or a landing page for the application.
 
-Please send through any other code or projects that you're proud of and would like to share with us.
+- **Movies:** The `/movies` route displays content related to movies. Users can explore a curated list of movies.The list is not clickable and will not direct to other pages.
 
-Any feedback on the coding challenge once you're done is also appreciated!
+- **Series:** The `/series` route is dedicated to showcasing TV series content. Users can discover a collection of TV series.The list is not clickable and will not direct to other pages.
+
+### Navigation
+
+Navigation between these routes is achieved using the [React Router](https://reactrouter.com/) library. The navigation flow is designed to enhance user experience and provide seamless transitions between different sections of the application.
